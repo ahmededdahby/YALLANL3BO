@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">YALLA NL3BO</string>
+    <string name="filter">FILTER</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="heure"></string>
+    <string name="sport"></string>
+    <string name="placesDisp"></string>
+    <string name="placesMax"></string>
+    <string name="terrain"></string>
+    <string name="prix"></string>
+    <string name="duree"></string>
+    <string name="places" />
 </resources>

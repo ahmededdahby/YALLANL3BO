@@ -4,6 +4,7 @@ package com.example.yallanl3bo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,15 +26,18 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
+
     TextInputLayout email,password;
     CardView login;
     FirebaseAuth firebaseAuth;
     String Email ,Password;
     TextView Inscription ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         login=findViewById(R.id.loginbutton);
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     if(task.isSuccessful()) {
                         if(Objects.requireNonNull(Objects.requireNonNull(firebaseAuth.getCurrentUser()).isEmailVerified()))
                         {
-                           //startActivity(new Intent(MainActivity.this, Acceuil.class));
+                           startActivity(new Intent(MainActivity.this, Acceuil.class));
                             finish();
                         }
                     }else {
@@ -90,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             password.setError(null);
             return true;
         }
+
     }
 
 
