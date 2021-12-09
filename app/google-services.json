@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "550501280759",
+    "project_id": "yalla-nl3bo",
+    "storage_bucket": "yalla-nl3bo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550501280759:android:e27a368f62416def085cf2",
+        "android_client_info": {
+          "package_name": "com.example.yallanl3bo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550501280759-shn9cg94hglo5qemssnrmucrvpoui8u3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCStgT_31wqGqNEAp1gaWA49naLmJwlUZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550501280759-shn9cg94hglo5qemssnrmucrvpoui8u3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
