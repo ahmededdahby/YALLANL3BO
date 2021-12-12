@@ -50,8 +50,14 @@
                 android:textSize="25dp" />
 
             <TextView
-                android:id="@+id/places"
-                android:layout_width="123dp"
+                android:id="@+id/placesRes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/placesMax"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
                 android:textSize="18sp" />
@@ -83,7 +89,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/terrain"
                 android:fontFamily="@font/poppins_light"
-                android:text="@string/prix"
+
                 android:textSize="20sp" />
 
             <TextView
@@ -101,7 +107,7 @@
 
                 android:layout_below="@id/terrain"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/duree"
+
                 android:textSize="20sp" />
 
         </LinearLayout>

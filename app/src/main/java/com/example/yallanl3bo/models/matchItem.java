@@ -1,12 +1,24 @@
 package com.example.yallanl3bo.models;
 
+import java.util.Date;
+
 public class matchItem {
-    private String Heure;
-    private int Places;
+    private int Heure;
+    private int Minutes;
+    private int PlacesReservees;
+    private int PlacesMax;
     private String Category;
     private String Terrain;
-    private String Prix;
-    private String Duree;
+    private int Prix;
+    private int Duree;
+
+    public int getMinutes() {
+        return Minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        Minutes = minutes;
+    }
 
     public matchItem() {
     }
@@ -15,25 +27,34 @@ public class matchItem {
         Terrain = terrain;
     }
 
-    public void setPrix(String prix) {
+    public void setPrix(int prix) {
         Prix = prix;
     }
-
-    public void setPlaces(int places) {
-        Places = places;
+    public void setPlacesMax(int placesMax) {
+        PlacesMax = placesMax;
     }
 
-    public void setHeure(String heure) {
+
+
+    public void setPlacesReservees(int placesRes) {
+        PlacesReservees = placesRes;
+    }
+
+
+
+    public void setHeure(int heure) {
         Heure = heure;
     }
 
-    public void setDuree(String duree) {
+    public void setDuree(int duree) {
         Duree = duree;
     }
 
-    public matchItem(String Heure, int Places, String Category, String Terrain, String Prix, String Duree){
+    public matchItem(int Heure,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
         this.Heure = Heure;
-        this.Places = Places;
+        this.Minutes= min;
+        this.PlacesReservees = PlacesRes;
+        this.PlacesMax = PlacesMax;
         this.Category=Category;
         this.Prix=Prix;
         this.Terrain=Terrain;
@@ -45,14 +66,16 @@ public class matchItem {
         Category = category;
     }
 
-    public String getHeure() {
+    public int getHeure() {
         return Heure;
     }
 
-    public int getPlaces() {
-        return Places;
+    public int getPlacesReservees() {
+        return PlacesReservees;
     }
-
+    public int getPlacesMax() {
+        return PlacesMax;
+    }
     public String getCategory() {
         return Category;
     }
@@ -61,11 +84,11 @@ public class matchItem {
         return Terrain;
     }
 
-    public String getPrix() {
+    public int getPrix() {
         return Prix;
     }
 
-    public String getDuree() {
+    public int getDuree() {
         return Duree;
     }
 }
