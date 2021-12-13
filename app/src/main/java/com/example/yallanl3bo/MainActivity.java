@@ -5,15 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
-
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -44,12 +39,8 @@ public class MainActivity extends AppCompatActivity {
         Inscription=findViewById(R.id.inscriptiontxt);
         firebaseAuth= FirebaseAuth.getInstance();
         // click sur s'inscrire :
-        Inscription.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.activity_inscription_page);
-            }
-        });
+
+
         // Click sur se connecter
         login.setOnClickListener(v -> {
             if(!emailValidation() | !passwordalidation()  ){
@@ -61,17 +52,34 @@ public class MainActivity extends AppCompatActivity {
                     if(task.isSuccessful()) {
                         if(Objects.requireNonNull(Objects.requireNonNull(firebaseAuth.getCurrentUser()).isEmailVerified()))
                         {
-                           startActivity(new Intent(MainActivity.this, Acceuil.class));
+                           startActivity(new Intent(MainActivity.this, Accueil.class));
                             finish();
                         }
                     }else {
                         email.setError("Veuillez vérifier votre adresse e-mail");
                     }
-                }).addOnFailureListener(e -> Log.d("Cet",e.getMessage()));
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("Cet" , e.getMessage());
+                        if(e.getMessage().equals("There is no user record corresponding to this identifier. The user may have been deleted.")){
+                            email.setError("Cet utilisateure");
+                        }
+
+
+
+                    }
+                });
+
             }
         });
 
     }
+    public void signIn(View view) {
+        Intent intent = new Intent(this, inscription_page.class);
+            startActivity(intent);
+    }
+
 
     // EMAIL
     boolean emailValidation(){
@@ -96,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 
 }
