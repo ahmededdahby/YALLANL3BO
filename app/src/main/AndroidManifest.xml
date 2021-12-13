@@ -15,7 +15,7 @@
             android:name=".Accueil"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Match"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
