@@ -3,8 +3,7 @@ package com.example.yallanl3bo.models;
 import java.util.Date;
 
 public class matchItem {
-    private int Heure;
-    private int Minutes;
+    private String Date;
     private int PlacesReservees;
     private int PlacesMax;
     private String Category;
@@ -12,13 +11,7 @@ public class matchItem {
     private int Prix;
     private int Duree;
 
-    public int getMinutes() {
-        return Minutes;
-    }
 
-    public void setMinutes(int minutes) {
-        Minutes = minutes;
-    }
 
     public matchItem() {
     }
@@ -41,18 +34,16 @@ public class matchItem {
     }
 
 
-
-    public void setHeure(int heure) {
-        Heure = heure;
+    public void setDate(String date) {
+        this.Date = date;
     }
 
     public void setDuree(int duree) {
         Duree = duree;
     }
 
-    public matchItem(int Heure,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
-        this.Heure = Heure;
-        this.Minutes= min;
+    public matchItem(String date,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
+        this.Date = date;
         this.PlacesReservees = PlacesRes;
         this.PlacesMax = PlacesMax;
         this.Category=Category;
@@ -66,10 +57,10 @@ public class matchItem {
         Category = category;
     }
 
-    public int getHeure() {
-        return Heure;
-    }
 
+    public String getDate() {
+        return Date;
+    }
     public int getPlacesReservees() {
         return PlacesReservees;
     }
