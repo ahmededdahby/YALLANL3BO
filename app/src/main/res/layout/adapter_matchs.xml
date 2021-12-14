@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="200dp"
     android:layout_margin="10dp"
     android:background="@drawable/border_grey"
+
     >
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/border_green"
+        android:gravity="center">
+
+
 
     <TextView
         android:id="@+id/heureMatch"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/border_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-light"
         android:gravity="center"
-        android:text="@string/heure"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="26sp" />
+        <TextView
+            android:id="@+id/dateMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="center"
+            android:text=""
+            android:layout_below="@id/heureMatch"
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+    </LinearLayout>
 
     <LinearLayout
-
-        android:layout_width="246dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/infoBoxMatches"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
         <LinearLayout
 
@@ -50,8 +76,15 @@
                 android:textSize="25dp" />
 
             <TextView
-                android:id="@+id/places"
-                android:layout_width="123dp"
+                android:id="@+id/placesRes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/placesMax"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
                 android:textSize="18sp" />
@@ -70,11 +103,12 @@
             android:textSize="20sp" />
 
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="10dp">
+            android:layout_marginBottom="10dp">
 
 
             <TextView
@@ -83,7 +117,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/terrain"
                 android:fontFamily="@font/poppins_light"
-                android:text="@string/prix"
+
                 android:textSize="20sp" />
 
             <TextView
@@ -101,12 +135,24 @@
 
                 android:layout_below="@id/terrain"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/duree"
+
                 android:textSize="20sp" />
+
 
         </LinearLayout>
 
 
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRejoindre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infoBoxMatches"
+            android:layout_gravity="center"
+            android:text="Rejoindre">
+
+        </Button>
     </LinearLayout>
 
 
