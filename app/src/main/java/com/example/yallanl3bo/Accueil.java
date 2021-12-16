@@ -45,7 +45,7 @@ public class Accueil extends AppCompatActivity {
 
 
 recyclerView=findViewById(R.id.recyclerViewMatchs);
-        db = FirebaseDatabase.getInstance("https://yalla-nla3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs");
+        db = FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
