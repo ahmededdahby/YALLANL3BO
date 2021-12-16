@@ -8,7 +8,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:backgroundTint="@color/mygrey"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,30 +20,21 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:contextClickable="false"
                 android:src="@drawable/logo" />
         </RelativeLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                />
-        </ScrollView>
-
-
     </com.google.android.material.appbar.AppBarLayout>
+
+
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Créer votre match"
+        android:fontFamily="@font/poppins_bold"
 
+        android:text="Creation du match"
         android:textAlignment="viewStart"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,16 +43,21 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nomstade"
+
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
+        app:boxStrokeColor="@color/myblue"
+        app:hintTextColor="@color/mygreen"
         android:hint="Nom du stade"
+
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
-        app:hintTextColor="#56E07B"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -69,64 +65,79 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nomstade_text"
+            android:inputType="text"
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nbreplace"
+
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="40dp"
-        android:hint=""
+        app:boxStrokeColor="@color/myblue"
+        app:hintTextColor="@color/mygreen"
+        android:layout_marginTop="30dp"
+        android:hint="Places reservées"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
-        app:hintTextColor="#56E07B"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/placemax"
         app:layout_constraintTop_toBottomOf="@+id/nomstade">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nbreplace_text"
+            android:inputType="number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/placemax"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-
-        android:layout_marginTop="40dp"
+        app:boxStrokeColor="@color/myblue"
+        app:hintTextColor="@color/mygreen"
+        android:layout_marginTop="30dp"
         android:hint="Nombre de place"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
-        app:hintTextColor="#56E07B"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomstade">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/placemax_text"
+            android:inputType="number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/prix"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:hint="Prix"
+
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
-        app:hintTextColor="#56E07B"
+        app:boxStrokeColor="@color/myblue"
+        app:hintTextColor="@color/mygreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nbreplace"
@@ -134,8 +145,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/prix_text"
+            android:inputType="number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -144,19 +157,21 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:hint="Duree"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
-        app:hintTextColor="#56E07B"
+        app:boxStrokeColor="@color/myblue"
+        app:hintTextColor="@color/mygreen"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prix">
+        app:layout_constraintTop_toBottomOf="@+id/prix"
+        app:startIconCheckable="false">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/duree_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -164,47 +179,65 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="40dp"
+        app:boxStrokeColor="@color/myblue"
+        app:hintTextColor="@color/mygreen"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:hint="Heure"
         app:boxBackgroundMode="outline"
+
         app:boxCornerRadiusTopEnd="16dp"
-        app:hintTextColor="#56E07B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/prix">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/heure_text"
+            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="80dp"
-        android:shadowRadius="20"
-app:layout_constraintTop_toBottomOf="@+id/heure"
         android:id="@+id/date_picker"
-        android:text="choisir votre date"
-        android:backgroundTint="@color/mygreen">
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/mygreen"
+        android:shadowRadius="20"
+
+        android:text="Date"
+        app:icon="@drawable/ic_calendar"
+        app:layout_constraintEnd_toEndOf="@+id/duree"
+        app:layout_constraintStart_toStartOf="@+id/duree"
+        app:layout_constraintTop_toBottomOf="@+id/duree">
 
     </Button>
+
+    <TextView
+        android:id="@+id/selected_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date Choisie"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/date_picker"
+        app:layout_constraintEnd_toEndOf="@+id/heure"
+        app:layout_constraintStart_toStartOf="@+id/heure"
+        app:layout_constraintTop_toBottomOf="@+id/duree" />
+
     <Button
 
         android:id="@+id/submitbutton"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="32dp"
+
         android:backgroundTint="#293253"
         android:gravity="center"
+
         android:shadowRadius="20"
-        android:text="submit"
+        android:text="Créer votre match"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date_picker" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -212,6 +245,9 @@ app:layout_constraintTop_toBottomOf="@+id/heure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#293253"
+        android:contextClickable="true"
+        android:isScrollContainer="false"
+        android:pointerIcon="all_scroll"
         app:itemIconTint="@color/light_grey"
         app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -226,21 +262,12 @@ app:layout_constraintTop_toBottomOf="@+id/heure"
         android:layout_width="409dp"
         android:layout_height="673dp"
         app:defaultNavHost="true"
+
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/my_nav" />
-
-    <TextView
-        android:id="@+id/selected_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date Choisie"
-        app:layout_constraintBottom_toTopOf="@+id/submitbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_picker" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
