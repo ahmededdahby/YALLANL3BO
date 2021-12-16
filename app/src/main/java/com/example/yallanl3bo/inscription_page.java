@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
-public class 2inscription_page extends AppCompatActivity {
+public class inscription_page extends AppCompatActivity {
     TextInputLayout EmailInput,PasswordInput,PasswordconfirmInput;
     CardView InscriptionCard;
     FirebaseAuth firebaseAuth;
