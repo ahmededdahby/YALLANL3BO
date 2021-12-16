@@ -3,6 +3,7 @@ package com.example.yallanl3bo;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yallanl3bo.models.matchItem;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
@@ -25,12 +28,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder> {
 
    Context context;
-
-    public AdapterMatch(Context context,ArrayList<matchItem> list) {
+  public AdapterMatch(Context context,ArrayList<matchItem> list) {
         this.context = context;
         this.list=list;
     }
@@ -44,23 +47,53 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder,int position) {
+
+        DateFormat formatDate = new SimpleDateFormat("dd-MM-yy");
+        DateFormat formatheure = new SimpleDateFormat("HH:mm");
+
+        DateFormat formatgen = new SimpleDateFormat("dd-MM-yy HH:mm");
 
         matchItem model = list.get(position);
 
-        DateFormat formatDate = new SimpleDateFormat("dd-MM-YY");
-        DateFormat formatheure = new SimpleDateFormat("HH:mm");
 
-        DateFormat formatgen = new SimpleDateFormat("dd-MM-YY HH:mm");
+        Date now = new Date();
+        if (model.getDate() != null) {
+            Date itemD = null;
+            try {
+                itemD = formatgen.parse(model.getDate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if (itemD.before(now)) {
+                String id = model.getId();
+
+                FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs").child(id).removeValue() ;
+
+
+
+
+
+            }
+        }
+
+
+
+
+
+
+        Date d = null;
 
       if (model.getDate() != null) {
 
-          Date d = null;
           try {
               d = formatgen.parse(model.getDate());
+              Log.d("datemat",d.toString());
+
           } catch (ParseException e) {
               e.printStackTrace();
           }
+
 
           holder.dateM.setText(formatDate.format(d));
           holder.heure.setText(formatheure.format(d));
@@ -74,53 +107,69 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
         holder.terrain.setText(model.getTerrain());
         holder.prix.setText(model.getPrix()+"DH");
         holder.duree.setText(model.getDuree()+"H");
-        holder.btnRejoindre.setOnClickListener(new View.OnClickListener() {
+        if(model.getPlacesReservees()>=model.getPlacesMax()){
+            holder.btnRejoindre.setEnabled(false);
+        }
+
+
+            holder.btnRejoindre.setOnClickListener(new View.OnClickListener() {
+
 
 
             @Override
             public void onClick(View v) {
 
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(holder.placesRes.getContext());
-                builder.setTitle("Voulez-vous vraiment rejoindre ce match?");
-                builder.setMessage("Vous vous engagez à eetre present à l'heure prévue!!!");
+                if (user != null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(holder.placesRes.getContext());
+                    builder.setTitle("Voulez-vous vraiment rejoindre ce match?");
+                    builder.setMessage("Vous vous engagez à eetre present à l'heure prévue!!!");
 
-                builder.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Map<String,Object> map = new HashMap<>();
-                        map.put("PlacesReservees",model.getPlacesReservees()+1);
-                        Log.d("map",map.toString());
-                        Log.d("position", String.valueOf(holder.getBindingAdapterPosition()));
+                    builder.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("PlacesReservees", model.getPlacesReservees() + 1);
+                            Log.d("map", map.toString());
+
+                            String id = model.getId();
+                            Log.d("id", id);
+
+                            FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs").child(id).updateChildren(map);
+
+                            model.setPlacesReservees(model.getPlacesReservees() + 1);
+                            notifyItemChanged(position);
+                            Toast.makeText(holder.placesRes.getContext(), "BON MATCH !", Toast.LENGTH_SHORT).show();
 
 
-                        FirebaseDatabase.getInstance("https://yalla-nla3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs").child(String.valueOf(holder.getBindingAdapterPosition())).updateChildren(map);
+                        }
+                    });
+                    builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(holder.cat.getContext(), "Annulé", Toast.LENGTH_SHORT).show();
+                            dialog.cancel();
+
+                        }
+                    });
+                    if (model.getPlacesReservees() < model.getPlacesMax()) {
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    };
 
 
 
-
-
-
-                    }
-                });
-                builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(holder.cat.getContext(),"Annulé",Toast.LENGTH_SHORT).show();
-                        dialog.cancel();
-
-                    }
-                });
-                if(model.getPlacesReservees()<model.getPlacesMax()){
-                    AlertDialog dialog = builder.create();
+                }  else {
+                    AlertDialog.Builder build = new AlertDialog.Builder(holder.placesRes.getContext());
+                    build.setTitle("Connectez-vous d'abord!");
+                    build.setMessage(" Vous devez etre connecté pour rejoindre un match ");
+                    AlertDialog dialog = build.create();
                     dialog.show();
-                }
-               else {
-                    Toast.makeText(holder.cat.getContext(),"Match Complet",Toast.LENGTH_SHORT).show();
 
                 }
-            }
-        });
+
+            }  });
     }
 
     @Override
