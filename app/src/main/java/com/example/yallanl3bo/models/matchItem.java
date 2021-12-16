@@ -44,17 +44,17 @@ public class matchItem {
     }
 
 
-    public void setDate(String date) {
-        this.Date = date;
+    public void setDate(String Date) {
+        this.Date = Date;
     }
 
     public void setDuree(int duree) {
         Duree = duree;
     }
 
-    public matchItem(String id,String date,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
+    public matchItem(String id,String Date,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
         this.id=id;
-        this.Date = date;
+        this.Date = Date;
         this.PlacesReservees = PlacesRes;
         this.PlacesMax = PlacesMax;
         this.Category=Category;

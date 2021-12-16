@@ -43,6 +43,7 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        View v = LayoutInflater.from(context).inflate(R.layout.adapter_matchs,parent, false) ;
+
        return new MyViewHolder(v);
     }
 
@@ -55,10 +56,13 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
         DateFormat formatgen = new SimpleDateFormat("dd-MM-yy HH:mm");
 
         matchItem model = list.get(position);
+        holder.setIsRecyclable(false);
 
 
         Date now = new Date();
         if (model.getDate() != null) {
+            Log.d("datemat",model.getDate()+"");
+
             Date itemD = null;
             try {
                 itemD = formatgen.parse(model.getDate());
@@ -88,7 +92,6 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
 
           try {
               d = formatgen.parse(model.getDate());
-              Log.d("datemat",d.toString());
 
           } catch (ParseException e) {
               e.printStackTrace();
@@ -97,8 +100,7 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
 
           holder.dateM.setText(formatDate.format(d));
           holder.heure.setText(formatheure.format(d));
-      }
-
+      };
 
 
         holder.cat.setText(model.getCategory());
@@ -121,7 +123,7 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                if (user != null) {
+                if (user == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(holder.placesRes.getContext());
                     builder.setTitle("Voulez-vous vraiment rejoindre ce match?");
                     builder.setMessage("Vous vous engagez à eetre present à l'heure prévue!!!");
@@ -136,11 +138,14 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
                             String id = model.getId();
                             Log.d("id", id);
 
+
+                           model.setPlacesReservees(model.getPlacesReservees() + 1);
+                            notifyItemChanged(position);
                             FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs").child(id).updateChildren(map);
 
-                            model.setPlacesReservees(model.getPlacesReservees() + 1);
-                            notifyItemChanged(position);
-                            Toast.makeText(holder.placesRes.getContext(), "BON MATCH !", Toast.LENGTH_SHORT).show();
+                            notifyDataSetChanged();
+
+                            Toast.makeText(context.getApplicationContext(), "BON MATCH !", Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -148,7 +153,7 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
                     builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(holder.cat.getContext(), "Annulé", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context.getApplicationContext(), "Annulé", Toast.LENGTH_SHORT).show();
                             dialog.cancel();
 
                         }
@@ -156,14 +161,28 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
                     if (model.getPlacesReservees() < model.getPlacesMax()) {
                         AlertDialog dialog = builder.create();
                         dialog.show();
-                    };
+                    }
 
 
 
-                }  else {
+                }
+                //user deconnecté
+               else {
                     AlertDialog.Builder build = new AlertDialog.Builder(holder.placesRes.getContext());
                     build.setTitle("Connectez-vous d'abord!");
                     build.setMessage(" Vous devez etre connecté pour rejoindre un match ");
+                    build.setPositiveButton("Se connecter", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    build.setNegativeButton("Continuer vers le site", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
                     AlertDialog dialog = build.create();
                     dialog.show();
 
