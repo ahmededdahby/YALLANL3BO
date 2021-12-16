@@ -1,6 +1,7 @@
 package com.example.yallanl3bo;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -37,44 +40,48 @@ public class Match extends AppCompatActivity {
         submitbutton=findViewById(R.id.submitbutton);
         datePickerBtn=findViewById(R.id.date_picker);
         MaterialDatePicker.Builder<Long> builder=MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText("Choisissez la date du match ");
-
-
+        builder.setTitleText("Saisissez la date du match ");
+        builder.setTheme(R.style.MaterialCalendarTheme);
         MaterialDatePicker<Long> materialDatePicker= builder.build();
-        matchDBRef= FirebaseDatabase.getInstance().getReference().child("Matchs");
+        matchDBRef= FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Matchs");
         submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 insertMatchData();
 
+
             }
         });
+
 
         datePickerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-materialDatePicker.show(getSupportFragmentManager(),"DATE_PICKER");
+        materialDatePicker.show(getSupportFragmentManager(),"DATE_PICKER");
+
+
 
 
             }
         });
+
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
-                selectedDateText.setText("Date choisie:"+ materialDatePicker.getHeaderText());
+                selectedDateText.setText( materialDatePicker.getHeaderText());
 
             }
         });
 
     }
     private void insertMatchData(){
-        String Stade= nomstade.toString();
-        String Prix= prix.toString();
-        String NbrePlace= nbreplace.toString();
-        String Heure= heure.toString();
-        String Duree= duree.toString();
-        String PlaceMax= placemax.toString();
-        String SelectedDate= selectedDateText.toString();
+        String Stade= nomstade.getText().toString();
+        String Prix= prix.getText().toString();
+        String NbrePlace= nbreplace.getText().toString();
+        String Heure= heure.getText().toString();
+        String Duree= duree.getText().toString();
+        String PlaceMax= placemax.getText().toString();
+        String SelectedDate= selectedDateText.getText().toString();
 
         Matchs matchs= new Matchs(Stade,Prix,Heure,NbrePlace,Duree,PlaceMax,SelectedDate);
         matchDBRef.push().setValue(matchs);
