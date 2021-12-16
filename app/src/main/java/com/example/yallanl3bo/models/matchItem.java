@@ -3,6 +3,16 @@ package com.example.yallanl3bo.models;
 import java.util.Date;
 
 public class matchItem {
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private String Date;
     private int PlacesReservees;
     private int PlacesMax;
@@ -34,16 +44,17 @@ public class matchItem {
     }
 
 
-    public void setDate(String date) {
-        this.Date = date;
+    public void setDate(String Date) {
+        this.Date = Date;
     }
 
     public void setDuree(int duree) {
         Duree = duree;
     }
 
-    public matchItem(String date,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
-        this.Date = date;
+    public matchItem(String id,String Date,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
+        this.id=id;
+        this.Date = Date;
         this.PlacesReservees = PlacesRes;
         this.PlacesMax = PlacesMax;
         this.Category=Category;
