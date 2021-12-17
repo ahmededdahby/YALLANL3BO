@@ -12,13 +12,10 @@
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/YALLANL3BO/app/src/main/res/layout/activity_main.xml" value="0.21875" />
         <entry key="app/src/main/res/drawable/border_green.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/border_grey.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/round_button.xml" value="0.31145833333333334" />
-        <entry key="app/src/main/res/layout/accueil.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/accueil.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_inscription_page.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/adapter_matchs.xml" value="0.3203125" />
-        <entry key="app/src/main/res/layout/mesmatchsadapter.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/mesmatchspage.xml" value="0.25" />
         <entry key="app/src/main/res/layout/topbar.xml" value="0.3098958333333333" />
       </map>
     </option>
