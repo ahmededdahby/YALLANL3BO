@@ -20,6 +20,8 @@ public class matchItem {
     private String Terrain;
     private int Prix;
     private int Duree;
+    private String Admin;
+
 
 
 
@@ -37,7 +39,13 @@ public class matchItem {
         PlacesMax = placesMax;
     }
 
+    public String getAdmin() {
+        return Admin;
+    }
 
+    public void setAdmin(String admin) {
+        Admin = admin;
+    }
 
     public void setPlacesReservees(int placesRes) {
         PlacesReservees = placesRes;
@@ -52,7 +60,7 @@ public class matchItem {
         Duree = duree;
     }
 
-    public matchItem(String id,String Date,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
+    public matchItem(String id,String Date,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree,String Admin){
         this.id=id;
         this.Date = Date;
         this.PlacesReservees = PlacesRes;
@@ -61,6 +69,7 @@ public class matchItem {
         this.Prix=Prix;
         this.Terrain=Terrain;
         this.Duree=Duree;
+        this.Admin=Admin;
 
     }
 

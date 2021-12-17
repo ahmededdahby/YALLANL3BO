@@ -16,6 +16,9 @@
         <activity
             android:name=".Accueil"
             android:exported="true" />
+        <activity android:name=".MesMatchs"
+            android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

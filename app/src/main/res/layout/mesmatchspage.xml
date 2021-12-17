@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".Accueil"
+    tools:context=".MesMatchs"
     android:layout_alignParentBottom="true">
 
 
@@ -13,20 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">
-
         <ImageView
-            android:id="@+id/logobar"
+            android:id="@+id/logobarmesmatchs"
             android:layout_width="199dp"
             android:layout_height="match_parent"
             android:layout_marginStart="100dp"
             app:srcCompat="@drawable/logo" />
-
-
-
     </LinearLayout>
     <TextView
-
-        android:id="@+id/matchIntrouvabletxt"
+        android:id="@+id/aucunmatchcreeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
@@ -42,26 +37,15 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMatchs"
+        android:id="@+id/recyclerViewMesMatchs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-         >
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button"
-        android:layout_width="130dp"
-        android:layout_height="52dp"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="10dp"
-        android:contentDescription="+"
-        android:gravity="center"
-        android:padding="15dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:iconPadding="0dp" />
+
 
 
 </LinearLayout>

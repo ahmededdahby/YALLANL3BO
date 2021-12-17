@@ -111,6 +111,7 @@
         android:layout_below="@id/loginbutton"
         android:layout_margin="15dp"
         android:gravity="right"
+
         android:text="Pas encore inscrit(e) ? Rejoins-nous  "
         android:textSize="18dp" />
 

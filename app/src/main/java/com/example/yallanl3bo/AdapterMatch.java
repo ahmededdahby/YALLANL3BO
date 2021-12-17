@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.yallanl3bo.models.matchItem;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
@@ -29,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ValueEventListener;
 
 public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder> {
 
@@ -43,7 +45,6 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        View v = LayoutInflater.from(context).inflate(R.layout.adapter_matchs,parent, false) ;
-
        return new MyViewHolder(v);
     }
 
@@ -123,31 +124,24 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                if (user == null) {
+                if (user != null) {
+                    Log.d("email",user.getEmail());
+
                     AlertDialog.Builder builder = new AlertDialog.Builder(holder.placesRes.getContext());
                     builder.setTitle("Voulez-vous vraiment rejoindre ce match?");
-                    builder.setMessage("Vous vous engagez à eetre present à l'heure prévue!!!");
+                    builder.setMessage("Vous vous engagez à etre present à l'heure prévue!!!");
 
                     builder.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Map<String, Object> map = new HashMap<>();
-                            map.put("PlacesReservees", model.getPlacesReservees() + 1);
-                            Log.d("map", map.toString());
-
                             String id = model.getId();
                             Log.d("id", id);
-
-
-                           model.setPlacesReservees(model.getPlacesReservees() + 1);
-                            notifyItemChanged(position);
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("PlacesReservees", model.getPlacesReservees() + 1);
+                            model.setPlacesReservees(model.getPlacesReservees() + 1);
                             FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs").child(id).updateChildren(map);
-
-                            notifyDataSetChanged();
-
+                            notifyItemChanged(position);
                             Toast.makeText(context.getApplicationContext(), "BON MATCH !", Toast.LENGTH_SHORT).show();
-
-
                         }
                     });
                     builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
