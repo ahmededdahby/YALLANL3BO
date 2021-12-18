@@ -15,6 +15,9 @@
         <activity
             android:name=".Accueil"
             android:exported="true" />
+        <activity android:name=".MesMatchs"
+            android:exported="true" />
+
         <activity
             android:name=".inscription_page"
             android:exported="false" />

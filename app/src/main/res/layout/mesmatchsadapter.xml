@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/border_grey"
+
+    >
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/border_green"
+        android:gravity="center">
+
+
+
+        <TextView
+            android:id="@+id/heuremonMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+        <TextView
+            android:id="@+id/datemonMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="center"
+            android:text=""
+            android:layout_below="@id/heuremonMatch"
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/infoBoxmonMatch"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mySportCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/sport"
+                    android:textColor="#293253"
+
+                    android:textFontWeight="80"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text=" - "
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/mesplacesRes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/mesplacesMax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/monTerrain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mySportCategory"
+                android:layout_marginStart="10dp"
+
+                android:fontFamily="@font/poppins"
+                android:text=""
+                android:textSize="20sp" />
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+
+                <TextView
+                    android:id="@+id/monprix"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/monTerrain"
+                    android:fontFamily="@font/poppins_light"
+
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text=" - "
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/maDuree"
+                    android:layout_width="138dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_below="@id/monTerrain"
+                    android:fontFamily="@font/poppins_bold"
+
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSupprimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infoBoxmonMatch"
+            android:layout_gravity="center"
+            android:text="Supprimer Match"
+            android:backgroundTint="@color/red">
+
+        </Button>
+    </LinearLayout>
+
+
+</LinearLayout>
