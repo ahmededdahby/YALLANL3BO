@@ -100,9 +100,10 @@ public class Match extends AppCompatActivity {
 
 
                 try {
+                    Log.d("user",user.getEmail());
                     Date d = format2Date.parse(selectedDateText.getText().toString());
                     String dd = formaterDate.format(d);
-                    matchItem matchs = new matchItem("abc@gmail.com",dd+" "+Heure,NbrePlace,PlaceMax, "Football", Stade,Prix, Duree);
+                    matchItem matchs = new matchItem(user.getEmail(),dd+" "+Heure,NbrePlace,PlaceMax, "Football", Stade,Prix, Duree);
                     matchDBRef.push().setValue(matchs);
                     Toast.makeText(getApplicationContext(),"Match created",Toast.LENGTH_SHORT).show();
 
