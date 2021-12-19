@@ -48,6 +48,7 @@ public class MesMatchs extends AppCompatActivity {
                     String id = dataSnapshot.getKey();
                     matchItem matchItem = dataSnapshot.getValue(matchItem.class);
                     matchItem.setId(id);
+                    Log.d("user",matchItem.getAdmin());
                     if(matchItem.getAdmin().equals( user.getEmail() )){
                         list2.add(matchItem);
                     }

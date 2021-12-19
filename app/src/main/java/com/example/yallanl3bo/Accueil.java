@@ -1,6 +1,5 @@
 package com.example.yallanl3bo;
 
-import static androidx.paging.PagedList.*;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,32 +8,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 
 import com.example.yallanl3bo.models.matchItem;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.vivekkaushik.datepicker.DatePickerTimeline;
-import com.vivekkaushik.datepicker.OnDateSelectedListener;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
 
 public class Accueil extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private FirebaseFirestore firebaseFirestore;
-    private FirestorePagingAdapter adapter;
+    private TextView aucunMatch;
 
     DatabaseReference db;
     AdapterMatch adapterMatch;
@@ -44,25 +38,13 @@ public class Accueil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accueil);
-        DatePickerTimeline datePickerTimeline = findViewById(R.id.datePickerTimeline);
 
-        datePickerTimeline.setInitialDate(2021, 11, 21);
-// Set a date Selected Listener
-        datePickerTimeline.setOnDateSelectedListener(new OnDateSelectedListener() {
-            @Override
-            public void onDateSelected(int year, int month, int day, int dayOfWeek) {
-                //Do Something
-            }
-        });
-
-recyclerView=findViewById(R.id.recyclerViewMatchs);
+        recyclerView=findViewById(R.id.recyclerViewMatchs);
         db = FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         list=new ArrayList<>();
-
-        Log.d("recycler","debut");
+       // aucunMatch = findViewById(R.id.matchIntrouvabletxt);
 
         db.orderByChild("Date").addValueEventListener(new ValueEventListener() {
             @Override
@@ -70,12 +52,17 @@ recyclerView=findViewById(R.id.recyclerViewMatchs);
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     String id = dataSnapshot.getKey();
                     matchItem matchItem = dataSnapshot.getValue(matchItem.class);
-
                     matchItem.setId(id);
                     list.add(matchItem);
-
-
                 }
+              /*  if (list.size()==0){
+                    aucunMatch.setText("Aucun match disponible");
+                    Log.d("listnul","list vide");
+                }
+                else {
+                    aucunMatch.setText("Liste des matches disponibles :");
+                    aucunMatch.setTextSize(30);
+                }*/
 
 
 
@@ -87,6 +74,7 @@ recyclerView=findViewById(R.id.recyclerViewMatchs);
 
             }
         });
+
 
         adapterMatch = new AdapterMatch(this,list);
         recyclerView.setAdapter(adapterMatch);

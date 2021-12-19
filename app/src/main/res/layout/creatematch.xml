@@ -158,7 +158,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
-        android:hint="Duree"
+        android:hint="Duree en heure"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxStrokeColor="@color/myblue"
@@ -171,7 +171,9 @@
             android:id="@+id/duree_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:inputType="number"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -194,7 +196,8 @@
             android:id="@+id/heure_text"
             android:singleLine="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -217,7 +220,7 @@
         android:id="@+id/selected_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date Choisie"
+
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/date_picker"
         app:layout_constraintEnd_toEndOf="@+id/heure"

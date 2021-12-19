@@ -26,11 +26,13 @@ import java.util.Date;
 public class mesMatchsAdapter extends RecyclerView.Adapter<mesMatchsAdapter.MyViewHolder2>{
     Context context;
     ArrayList<matchItem> list;
+    mesMatchsAdapter adapter;
 
 
     public mesMatchsAdapter(Context context,ArrayList<matchItem> list) {
         this.list = list;
         this.context=context;
+        this.adapter=this;
     }
 
     @NonNull
@@ -75,9 +77,8 @@ public class mesMatchsAdapter extends RecyclerView.Adapter<mesMatchsAdapter.MyVi
                         String id = model1.getId();
                         FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs").child(id).removeValue() ;
                         list.remove(id);
-                        notifyItemChanged(position);
-                        notifyItemRemoved(position);
-                        notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
+
                     }
                 });
                 builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {

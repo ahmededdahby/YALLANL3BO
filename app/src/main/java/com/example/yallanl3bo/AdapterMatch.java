@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,12 +73,7 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
             }
             if (itemD.before(now)) {
                 String id = model.getId();
-
                 FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs").child(id).removeValue() ;
-
-
-
-
 
             }
         }
@@ -112,6 +108,7 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
         holder.duree.setText(model.getDuree()+"H");
         if(model.getPlacesReservees()>=model.getPlacesMax()){
             holder.btnRejoindre.setEnabled(false);
+            holder.btnRejoindre.setBackgroundColor(Color.parseColor("#D3D3D3"));
         }
 
 
@@ -137,10 +134,11 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
                             String id = model.getId();
                             Log.d("id", id);
                             Map<String, Object> map = new HashMap<>();
-                            map.put("PlacesReservees", model.getPlacesReservees() + 1);
+                            map.put("placesReservees", model.getPlacesReservees() + 1);
                             model.setPlacesReservees(model.getPlacesReservees() + 1);
                             FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs").child(id).updateChildren(map);
                             notifyItemChanged(position);
+                            notifyDataSetChanged();
                             Toast.makeText(context.getApplicationContext(), "BON MATCH !", Toast.LENGTH_SHORT).show();
                         }
                     });

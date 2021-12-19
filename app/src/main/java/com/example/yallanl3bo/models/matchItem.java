@@ -60,8 +60,8 @@ public class matchItem {
         Duree = duree;
     }
 
-    public matchItem(String id,String Date,int min, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree,String Admin){
-        this.id=id;
+    public matchItem(String Admin,String Date, int PlacesRes,int PlacesMax, String Category, String Terrain, int Prix, int Duree){
+        this.Admin=Admin;
         this.Date = Date;
         this.PlacesReservees = PlacesRes;
         this.PlacesMax = PlacesMax;
@@ -69,7 +69,6 @@ public class matchItem {
         this.Prix=Prix;
         this.Terrain=Terrain;
         this.Duree=Duree;
-        this.Admin=Admin;
 
     }
 

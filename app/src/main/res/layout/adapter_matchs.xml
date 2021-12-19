@@ -203,7 +203,7 @@ android:fontFamily="@font/poppins_regular"
             android:textSize="9dp"
             android:topLeftRadius="16dp"
             android:topRightRadius="16dp"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 

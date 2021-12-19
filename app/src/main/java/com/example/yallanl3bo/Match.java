@@ -2,13 +2,19 @@ package com.example.yallanl3bo;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.DatePickerDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
+
+import com.example.yallanl3bo.models.matchItem;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -42,7 +48,7 @@ public class Match extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creatematch);
         //DBelements
-        matchDBRef= FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Matchs");
+        matchDBRef= FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app").getReference("matchs");
         nomstade = (TextInputEditText)findViewById(R.id.nomstade_text);
         prix =(TextInputEditText)findViewById(R.id.prix_text);
         heure =(TextInputEditText)findViewById(R.id.heure_text);
@@ -76,7 +82,36 @@ public class Match extends AppCompatActivity {
         submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertMatchData();
+
+                DateFormat formaterDate = new SimpleDateFormat("dd-MM-yy");
+                DateFormat format2Date = new SimpleDateFormat("MMM dd,yyyy");
+
+
+
+
+                String Stade= nomstade.getText().toString();
+                int Prix= Integer.parseInt(prix.getText().toString());
+                int NbrePlace= Integer.parseInt(nbreplace.getText().toString());
+                String Heure= heure.getText().toString();
+                int Duree= Integer.parseInt(duree.getText().toString());
+                int PlaceMax= Integer.parseInt(placemax.getText().toString());
+
+
+
+
+                try {
+                    Date d = format2Date.parse(selectedDateText.getText().toString());
+                    String dd = formaterDate.format(d);
+                    matchItem matchs = new matchItem("abc@gmail.com",dd+" "+Heure,NbrePlace,PlaceMax, "Football", Stade,Prix, Duree);
+                    matchDBRef.push().setValue(matchs);
+                    Toast.makeText(getApplicationContext(),"Match created",Toast.LENGTH_SHORT).show();
+
+
+                } catch (ParseException e) {
+                    Log.d("erreur","erreur");
+                    e.printStackTrace();
+                }
+
 
 
             }
@@ -86,6 +121,7 @@ public class Match extends AppCompatActivity {
         datePickerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
         materialDatePicker.show(getSupportFragmentManager(),"DATE_PICKER");
 
 
@@ -99,23 +135,13 @@ public class Match extends AppCompatActivity {
             public void onPositiveButtonClick(Object selection) {
 
                 selectedDateText.setText( materialDatePicker.getHeaderText());
+                Log.d("datepick",materialDatePicker.getHeaderText());
+
+
 
             }
         });
 
     }
-    private void insertMatchData(){
-        String Stade= nomstade.getText().toString();
-        String Prix= prix.getText().toString();
-        String NbrePlace= nbreplace.getText().toString();
-        String Heure= heure.getText().toString();
-        String Duree= duree.getText().toString();
-        String PlaceMax= placemax.getText().toString();
-        String SelectedDate= selectedDateText.getText().toString();
 
-        Matchs matchs= new Matchs(Stade,Prix,Heure,NbrePlace,Duree,PlaceMax,SelectedDate,UserEmail);
-        matchDBRef.push().setValue(matchs);
-        Toast.makeText(Match.this,"Match created",Toast.LENGTH_SHORT).show();
-
-    }
 }
