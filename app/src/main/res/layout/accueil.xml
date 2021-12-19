@@ -1,67 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context=".Accueil"
-    android:layout_alignParentBottom="true">
+tools:context=".Accueil"
+android:layout_alignParentBottom="true">
 
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/topbar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal">
+        android:layout_height="50dp"
+        android:backgroundTint="@color/mygrey"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/logobar"
-            android:layout_width="199dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="100dp"
-            app:srcCompat="@drawable/logo" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:contextClickable="false"
+                android:src="@drawable/logo" />
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
+    <com.vivekkaushik.datepicker.DatePickerTimeline
+        android:id="@+id/datePickerTimeline"
 
-    </LinearLayout>
-    <TextView
-
-        android:id="@+id/matchIntrouvabletxt"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:textColor="@color/teal_200"
-        />
-
-
-
-
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewMatchs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMatchs"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerTimeline" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-         >
+        android:background="#293253"
+        android:contextClickable="true"
+        android:isScrollContainer="false"
+        android:pointerIcon="all_scroll"
+        app:itemIconTint="@color/light_grey"
+        app:itemTextColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="409dp"
+        android:layout_height="673dp"
+        app:defaultNavHost="true"
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button"
-        android:layout_width="130dp"
-        android:layout_height="52dp"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="10dp"
-        android:contentDescription="+"
-        android:gravity="center"
-        android:padding="15dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:iconPadding="0dp" />
-
-
-</LinearLayout>
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:navGraph="@navigation/my_nav" />
+</androidx.constraintlayout.widget.ConstraintLayout>

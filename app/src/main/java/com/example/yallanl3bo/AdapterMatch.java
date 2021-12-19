@@ -210,7 +210,8 @@ public class AdapterMatch extends RecyclerView.Adapter<AdapterMatch.MyViewHolder
             placesRes = itemView.findViewById(R.id.placesRes);
           terrain = itemView.findViewById(R.id.terrain);
             prix = itemView.findViewById(R.id.prix);
-            duree = itemView.findViewById(R.id.duree);btnRejoindre=itemView.findViewById(R.id.btnRejoindre);
+            duree = itemView.findViewById(R.id.duree);
+            btnRejoindre=itemView.findViewById(R.id.btnRejoindre);
         }
     }
 }

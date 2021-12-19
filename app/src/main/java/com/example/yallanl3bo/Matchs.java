@@ -8,9 +8,10 @@ public class Matchs {
     String Duree;
     String PlaceMax;
     String SelectedDate;
+     String UserEmail     ;
 
 
-    public Matchs(String stade, String prix, String heure, String nbrePlace,String duree,String placemax, String selecteddate) {
+    public Matchs(String stade, String prix, String heure, String nbrePlace,String duree,String placemax, String selecteddate,String useremail) {
         Stade = stade;
         Prix = prix;
         Heure = heure;
@@ -18,6 +19,7 @@ public class Matchs {
         Duree=duree;
         PlaceMax=placemax;
         SelectedDate=selecteddate;
+        UserEmail=useremail;
     }
 
     public String getStade() {
@@ -43,5 +45,8 @@ public class Matchs {
     }
     public String getSelectedDate() {
         return SelectedDate;
+    }
+    public String getUserEmail() {
+        return UserEmail;
     }
 }
