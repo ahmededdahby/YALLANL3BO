@@ -8,25 +8,6 @@
     tools:context=".Profile"
     android:background="@drawable/backgroundwave2">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/topbar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/mygrey"
-        android:minHeight="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:contextClickable="false"
-                android:src="@drawable/logo" />
-        </RelativeLayout>
-    </com.google.android.material.appbar.AppBarLayout>
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="130dp"
