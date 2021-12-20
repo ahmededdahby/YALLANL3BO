@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 
@@ -16,6 +18,8 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +33,7 @@ import java.util.ArrayList;
 public class Accueil extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView aucunMatch;
-
+BottomNavigationView bottomNavigationView;
     DatabaseReference db;
     AdapterMatch adapterMatch;
     ArrayList<matchItem> list;
@@ -38,7 +42,27 @@ public class Accueil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accueil);
+BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+bottomNavigationView.setSelectedItemId(R.id.accueil );
+bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mesmatchs:
+                startActivity(new Intent(getApplicationContext(),MesMatchs.class));
+                overridePendingTransition(0,0);
+                return true;
+            case R.id.accueil:
 
+                return true;
+            case R.id.monprofil:
+                startActivity(new Intent(getApplicationContext(),Profile.class));
+                overridePendingTransition(0,0);
+                return true;
+        }
+        return false;
+    }
+});
         recyclerView=findViewById(R.id.recyclerViewMatchs);
         db = FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("matchs");
         recyclerView.setHasFixedSize(true);

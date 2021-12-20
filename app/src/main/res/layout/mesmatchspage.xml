@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MesMatchs"
+android:layout_alignParentBottom="true">
+
+
+<com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/topbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context=".MesMatchs"
-    android:layout_alignParentBottom="true">
+    android:layout_height="50dp"
+    android:backgroundTint="@color/mygrey"
+    android:minHeight="?attr/actionBarSize"
+    app:layout_constraintTop_toTopOf="parent">
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
+
         <ImageView
-            android:id="@+id/logobarmesmatchs"
-            android:layout_width="199dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="100dp"
-            app:srcCompat="@drawable/logo" />
-    </LinearLayout>
-    <TextView
-        android:id="@+id/aucunmatchcreeTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:textColor="@color/teal_200"
-        />
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:contextClickable="false"
+            android:src="@drawable/logo" />
+    </RelativeLayout>
+</com.google.android.material.appbar.AppBarLayout>
 
-
-
+<TextView
+    android:id="@+id/aucunmatchcreeTxt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:textSize="40sp"
+    android:textStyle="bold"
+    android:textColor="@color/teal_200"
+    />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -41,11 +46,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        >
+        app:layout_constraintTop_toTopOf="@+id/fragmentContainerView">
 
     </androidx.recyclerview.widget.RecyclerView>
 
 
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottomNavigationView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#293253"
+    android:layout_marginTop="50dp"
+    android:contextClickable="true"
+    android:isScrollContainer="false"
+    android:pointerIcon="all_scroll"
+    app:itemIconTint="@color/light_grey"
+    app:itemTextColor="#FFFFFF"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:menu="@menu/bottom_menu" />
 
+<androidx.fragment.app.FragmentContainerView
+    android:id="@+id/fragmentContainerView"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    android:layout_width="415dp"
+    android:layout_height="580dp"
+    app:defaultNavHost="true"
 
-</LinearLayout>
+    app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/topbar"
+    app:layout_constraintVertical_bias="1.0"
+    app:navGraph="@navigation/my_nav" />
+</androidx.constraintlayout.widget.ConstraintLayout>

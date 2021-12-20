@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item  android:id="@+id/first"   android:title="Accueil" android:icon="@drawable/ic_home"/>
-    <item android:id="@+id/second"  android:title="Mes matchs" android:icon="@drawable/ic_calendar"/>
-    <item android:id="@+id/third" android:title="Mon equipe" android:icon="@drawable/ic_team"/>
-    <item android:id="@+id/fourth" android:title="Mon profil" android:icon="@drawable/ic_person"/>
+    <item  android:id="@+id/accueil"   android:title="Accueil" android:icon="@drawable/ic_home"/>
+    <item android:id="@+id/mesmatchs"  android:title="Mes matchs" android:icon="@drawable/ic_calendar"/>
+    <item android:id="@+id/monprofil" android:title="Mon profil" android:icon="@drawable/ic_person"/>
 </menu>
