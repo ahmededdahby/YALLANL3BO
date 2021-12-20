@@ -190,11 +190,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/prix">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.vicmikhailau.maskededittext.MaskedEditText
             android:id="@+id/heure_text"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:mask="##:##"
+            android:inputType="number"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

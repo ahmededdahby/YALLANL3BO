@@ -1,5 +1,6 @@
 package com.example.yallanl3bo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.auth.User;
+import com.vicmikhailau.maskededittext.MaskedEditText;
 
 import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
@@ -39,7 +41,8 @@ import java.util.TimeZone;
 public class Match extends AppCompatActivity {
     TextView selectedDateText;
     String UserEmail;
-    TextInputEditText nomstade,prix,heure,nbreplace,duree,placemax;
+    MaskedEditText heure;
+    TextInputEditText nomstade,prix,nbreplace,duree,placemax;
     Button submitbutton, datePickerBtn;
     DatabaseReference matchDBRef;
 
@@ -48,15 +51,25 @@ public class Match extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creatematch);
         //DBelements
-        matchDBRef= FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app").getReference("matchs");
-        nomstade = (TextInputEditText)findViewById(R.id.nomstade_text);
-        prix =(TextInputEditText)findViewById(R.id.prix_text);
-        heure =(TextInputEditText)findViewById(R.id.heure_text);
-        nbreplace =(TextInputEditText)findViewById(R.id.nbreplace_text);
-        duree= findViewById(R.id.duree_text);
-        placemax =findViewById(R.id.placemax_text);
-        selectedDateText=findViewById(R.id.selected_date);
-        submitbutton=findViewById(R.id.submitbutton);
+        matchDBRef = FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app").getReference("matchs");
+        nomstade = (TextInputEditText) findViewById(R.id.nomstade_text);
+        prix = (TextInputEditText) findViewById(R.id.prix_text);
+        heure = (MaskedEditText) findViewById(R.id.heure_text);
+        nbreplace = (TextInputEditText) findViewById(R.id.nbreplace_text);
+        duree = findViewById(R.id.duree_text);
+        placemax = findViewById(R.id.placemax_text);
+        selectedDateText = findViewById(R.id.selected_date);
+        submitbutton = findViewById(R.id.submitbutton);
+        submitbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity2();
+            }
+        });
+    }
+        public void openActivity2(){
+            Intent intent=new Intent(this,test.class);
+            startActivity(intent);
         //datepicker
         datePickerBtn=findViewById(R.id.date_picker);
         Calendar calendar=Calendar.getInstance(TimeZone.getTimeZone("UTC"));
@@ -100,10 +113,10 @@ public class Match extends AppCompatActivity {
 
 
                 try {
-                    Log.d("user",user.getEmail());
+
                     Date d = format2Date.parse(selectedDateText.getText().toString());
                     String dd = formaterDate.format(d);
-                    matchItem matchs = new matchItem(user.getEmail(),dd+" "+Heure,NbrePlace,PlaceMax, "Football", Stade,Prix, Duree);
+                    matchItem matchs = new matchItem("saad@gmail.com",dd+" "+Heure,NbrePlace,PlaceMax, "Football", Stade,Prix, Duree);
                     matchDBRef.push().setValue(matchs);
                     Toast.makeText(getApplicationContext(),"Match created",Toast.LENGTH_SHORT).show();
 
