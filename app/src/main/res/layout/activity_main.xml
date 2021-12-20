@@ -35,8 +35,6 @@
         android:layout_height="64dp"
         android:layout_below="@id/text"
         android:layout_margin="20dp"
-        app:errorEnabled="true"
-        app:hintEnabled="true"
         android:layout_centerHorizontal="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -78,6 +76,7 @@
         android:layout_below="@id/password"
         android:layout_marginBottom="15dp"
         android:gravity="right"
+        android:onClick="ForgotPassword"
         android:text="Mot de passe oublié ?"
         android:textSize="20dp"
         android:textStyle="bold" />

@@ -18,19 +18,24 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
 public class inscription_page extends AppCompatActivity {
-    TextInputLayout EmailInput,PasswordInput,PasswordconfirmInput;
+    TextInputLayout EmailInput,PasswordInput,PasswordconfirmInput,nomInput,prenomInput,villeInput,phoneInput;
     CardView InscriptionCard;
     FirebaseAuth firebaseAuth;
-    String Email ,Password;
+    String Email ,Password,nom,prenom,phone,ville;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription_page);
         //initialisation
+        nomInput = findViewById(R.id.nom);
+        prenomInput = findViewById(R.id.prenom);
+        villeInput = findViewById(R.id.ville);
+        phoneInput = findViewById(R.id.Phone);
         EmailInput = findViewById(R.id.EmailInput);
         PasswordInput = findViewById(R.id.PasswordInput);
         PasswordconfirmInput = findViewById(R.id.PasswordconfirmInput);
@@ -47,10 +52,18 @@ public class inscription_page extends AppCompatActivity {
             } else {
                 Email = Objects.requireNonNull(EmailInput.getEditText()).getText().toString();
                 Password = PasswordInput.getEditText().getText().toString();
+                nom = nomInput.getEditText().getText().toString();
+                prenom = prenomInput.getEditText().getText().toString();
+                ville = villeInput.getEditText().getText().toString();
+                phone= phoneInput.getEditText().getText().toString();
                 firebaseAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            User user = new User(nom, prenom, ville, phone,Email);
+
+                            FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user);
                             firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -63,6 +76,7 @@ public class inscription_page extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d("Cet email" , e.getMessage());
+                                    EmailInput.setError("Cette adresse e-mail est déja utilisée ");
                                 }
                             });
                         }
@@ -71,6 +85,7 @@ public class inscription_page extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.d("Cet" , e.getMessage());
+                        PasswordInput.setError("votre mot de passe doit contenir au moins 6 caracteres");
                     }
                 });
             }
@@ -123,4 +138,3 @@ public class inscription_page extends AppCompatActivity {
 
 
 }
-

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.yallanl3bo">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,21 +14,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YALLANL3BO">
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".Accueil"
             android:exported="true" />
-        <activity android:name=".MesMatchs"
+        <activity
+            android:name=".MesMatchs"
             android:exported="true" />
         <activity
             android:name=".inscription_page"
             android:exported="false" />
         <activity
-            android:name=".Match"
+            android:name=".MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
-            android:name=".test"
-            android:exported="true">
-        </activity>
+            android:name=".forgetPass"
+            android:exported="true"></activity>
+        <activity
+            android:name=".MesMatchs"
+            android:exported="true"
+            tools:ignore="DuplicateActivity"></activity>
+        <activity
+            android:name=".Match"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
