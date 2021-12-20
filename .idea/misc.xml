@@ -10,34 +10,19 @@
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/YALLANL3BO/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/YALLANL3BO/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/YALLANL3BO/app/src/main/res/layout/activity_main.xml" value="0.21875" />
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2358974358974359" />
         <entry key="app/src/main/res/drawable/border_green.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/border_grey.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/circle.xml" value="0.2598958333333333" />
-        <entry key="app/src/main/res/drawable/circleshape.xml" value="0.2358974358974359" />
-        <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.23958333333333334" />
-        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.23958333333333334" />
-        <entry key="app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.23958333333333334" />
-        <entry key="app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.2358974358974359" />
-        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.2358974358974359" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.23958333333333334" />
-        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.2358974358974359" />
-        <entry key="app/src/main/res/drawable/round_button.xml" value="0.23958333333333334" />
-        <entry key="app/src/main/res/drawable/rounded.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/drawable/round_button.xml" value="0.31145833333333334" />
         <entry key="app/src/main/res/layout/accueil.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_forget_pass.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_inscription_page.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/adapter_matchs.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_inscription_page.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/adapter_matchs.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/creatematch.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.23794871794871794" />
-        <entry key="app/src/main/res/layout/fragment_fourth.xml" value="0.23794871794871794" />
-        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.15052083333333333" />
-        <entry key="app/src/main/res/layout/fragment_third.xml" value="0.13854166666666667" />
-        <entry key="app/src/main/res/layout/mesmatchsadapter.xml" value="0.24270833333333333" />
-        <entry key="app/src/main/res/layout/mesmatchspage.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.11979166666666667" />
+        <entry key="app/src/main/res/layout/mesmatchsadapter.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/mesmatchspage.xml" value="0.25" />
         <entry key="app/src/main/res/layout/topbar.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.165" />
       </map>
     </option>
   </component>

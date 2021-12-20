@@ -41,14 +41,15 @@ public class MesMatchs extends AppCompatActivity {
         list2=new ArrayList<>();
         aucunMatch = findViewById(R.id.aucunmatchcreeTxt);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        db.orderByChild("Date").addValueEventListener(new ValueEventListener() {
+        db.orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     String id = dataSnapshot.getKey();
                     matchItem matchItem = dataSnapshot.getValue(matchItem.class);
                     matchItem.setId(id);
-                    Log.d("user",matchItem.getAdmin());
+                    Log.d("user",user.getEmail());
+                    Log.d("userA",matchItem.getAdmin());
                     if(matchItem.getAdmin().equals( user.getEmail() )){
                         list2.add(matchItem);
                     }

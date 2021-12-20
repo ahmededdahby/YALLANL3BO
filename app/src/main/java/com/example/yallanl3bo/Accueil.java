@@ -46,7 +46,7 @@ public class Accueil extends AppCompatActivity {
         list=new ArrayList<>();
        // aucunMatch = findViewById(R.id.matchIntrouvabletxt);
 
-        db.orderByChild("Date").addValueEventListener(new ValueEventListener() {
+        db.orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
