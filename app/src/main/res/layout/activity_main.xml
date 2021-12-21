@@ -112,17 +112,17 @@ android:layout_marginTop="-10dp"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
 
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/loginbutton"
         android:layout_width="320dp"
         android:layout_height="55dp"
         android:layout_marginTop="10dp"
         app:cardBackgroundColor="@color/myblue"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
         app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/forgetpass">
 
         <TextView

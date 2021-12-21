@@ -22,9 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="450dp"
-        android:fontFamily="@font/montserrat_bold"
+        android:fontFamily="@font/poppins_bold1"
         android:gravity="center"
         android:text="MATCH CRÉE"
+
 android:id="@+id/animtext"
         android:textColor="#F44336"
         android:textSize="50dp"

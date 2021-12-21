@@ -7,12 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -29,6 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.vivekkaushik.datepicker.DatePickerTimeline;
+import com.vivekkaushik.datepicker.OnDateSelectedListener;
+
 import java.util.ArrayList;
 
 
@@ -40,13 +40,22 @@ BottomNavigationView bottomNavigationView;
     DatabaseReference db;
     AdapterMatch adapterMatch;
     ArrayList<matchItem> list;
-    ImageButton creematch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accueil);
-        creematch= findViewById(R.id.createMatch);
+        DatePickerTimeline datePickerTimeline = findViewById(R.id.datePickerTimeline);
+// Set a Start date (Default, 1 Jan 1970)
+        datePickerTimeline.setInitialDate(2021 , 11, 21);
+// Set a date Selected Listener
+        datePickerTimeline.setOnDateSelectedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(int year, int month, int day, int dayOfWeek) {
+                // Do Something
+            }
+
+        });
 BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
 bottomNavigationView.setSelectedItemId(R.id.accueil );
 bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -107,13 +116,7 @@ bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelec
 
         adapterMatch = new AdapterMatch(this,list);
         recyclerView.setAdapter(adapterMatch);
-creematch.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(Accueil.this, Match.class));
-        finish();
-    }
-});
+
 
 
 
