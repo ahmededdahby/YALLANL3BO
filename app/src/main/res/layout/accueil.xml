@@ -43,10 +43,10 @@ android:layout_alignParentBottom="true">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMatchs"
         android:layout_width="380dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
 
         android:layout_margin="20dp"
-        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/createMatch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datePickerTimeline" />
@@ -81,4 +81,19 @@ android:layout_alignParentBottom="true">
         app:layout_constraintTop_toBottomOf="@+id/topbar"
         app:layout_constraintVertical_bias="1.0"
         app:navGraph="@navigation/my_nav" />
+    <ImageButton
+        android:id="@+id/createMatch"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/rounded"
+        android:src="@drawable/ic_round_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/bottomNavigationView"
+        tools:ignore="MissingConstraints">
+
+    </ImageButton>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
