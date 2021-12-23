@@ -55,6 +55,17 @@ public class Match extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creatematch);
+        submitbutton = findViewById(R.id.submitbutton);
+        submitbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity2();
+            }
+        });
+    }
+    public void openActivity2(){
+        Intent intent=new Intent(this,test.class);
+        startActivity(intent);
         //DBelements
         matchDBRef = FirebaseDatabase.getInstance("https://yalla-nl3bo-default-rtdb.europe-west1.firebasedatabase.app").getReference("matchs");
         nomstade = (TextInputEditText) findViewById(R.id.nomstade_text);
@@ -136,9 +147,13 @@ public class Match extends AppCompatActivity {
 
 
 
+                        int Prix=0;
+                        try {
+                            Prix= Integer.parseInt(prix.getText().toString());
+                        }catch (NumberFormatException e){
+                            System.out.println("not a number");
+                        }
                         String Stade= nomstade.getText().toString();
-                        int Prix= Integer.parseInt(prix.getText().toString());
-                        Log.d("prixm",Prix+"");
 
                         int NbrePlace= Integer.parseInt(nbreplace.getText().toString());
                         String Heure= heure.getText().toString();

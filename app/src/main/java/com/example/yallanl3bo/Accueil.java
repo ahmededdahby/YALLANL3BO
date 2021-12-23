@@ -47,6 +47,7 @@ BottomNavigationView bottomNavigationView;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accueil);
         creematch= findViewById(R.id.createMatch);
+
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.accueil );
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
